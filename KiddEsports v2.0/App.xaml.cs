@@ -26,6 +26,8 @@ namespace KiddEsports_v2._0
             if (builder.DoTablesExist() == false)
             {
                 builder.BuildDatabaseTables();
+                builder.PopulateTables();
+                builder.BuildDatabaseViews();
             }
         }
     }

@@ -23,6 +23,13 @@ namespace DataManagement.Models
             EventName = eventName;
         }
 
+        public Events(string eventName, string eventLocation, string eventDate)
+        {
+            EventName = eventName;
+            EventLocation = eventLocation;
+            EventDate = eventDate;
+        }
+
         public Events(int eventId, string eventName, string eventLocation, string eventDate)
         {
             EventId = eventId;

@@ -24,6 +24,15 @@ namespace DataManagement.Models
 
         }
 
+        public TeamResults(int eventID, int gamesPlayedID, int teamID, int opposingTeamID, string results)
+        {
+            EventID = eventID;
+            GamesPlayedID = gamesPlayedID;
+            TeamID = teamID;
+            OpposingTeamID = opposingTeamID;
+            Results = results;
+        }
+
         public TeamResults(int teamResultsID, int eventID, int gamesPlayedID, int teamID, int opposingTeamID, string results)
         {
             TeamResultsID = teamResultsID;

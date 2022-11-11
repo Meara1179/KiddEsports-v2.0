@@ -27,6 +27,13 @@ namespace DataManagement.Models
             TeamName = teamName;
         }
 
+        public TeamDetails(string teamName, int compPoints, int primaryContactId)
+        {
+            TeamName = teamName;
+            CompPoints = compPoints;
+            PrimaryContactId = primaryContactId;
+        }
+
         public TeamDetails(int teamID, string teamName, int compPoints, int primaryContactId, string primaryContactName)
         {
             TeamID = teamID;

@@ -11,13 +11,14 @@ namespace DataManagement
 {
     public class DB_Builder : DataAccess
     {
+        #region Database Schema
         // Creates a barebones database used for the application.
         public void CreateDatabase()
         {
             SqlConnection connection = Helper.CreateConnection("KiddEsports");
             try
             {
-                string connString = $"Data Source={connection.Database}; Integrated Security = True";
+                string connString = $"Data Source={connection.DataSource}; Integrated Security = True";
                 string query = $"IF NOT EXISTS(SELECT 1 FROM sys.databases WHERE name = '{connection.Database}') " +
                     $"CREATE DATABASE {connection.Database}";
 
@@ -95,10 +96,14 @@ namespace DataManagement
             CreateEventsTable();
             CreateGamesPlayedTable();
             CreateTeamResultsTable();
+        }
+        // Builds all the required views using other methods.
+        public void BuildDatabaseViews()
+        {
             CreateTeamDetailsView();
             CreateTeamResultsView();
-
         }
+        #endregion
         #region Table Builders
         // Builds the primary contact table.
         private void BuildPrimaryContactTable()
@@ -204,6 +209,89 @@ namespace DataManagement
             catch (Exception)
             {
 
+            }
+        }
+        #endregion
+        #region Populate Tables
+        // Populates the tables with data.
+        public void PopulateTables()
+        {
+            PopulatePrimaryContactTable();
+            PopulateTeamDetailsTable();
+            PopulateGamesPlayedTable();
+            PopulateEventsTable();
+            PopulateTeamResultsTable();
+        }
+
+        // Adds the data to the PrimaryContact table.
+        private void PopulatePrimaryContactTable()
+        {
+            List<PrimaryContact> primaryContacts = new List<PrimaryContact>();
+
+            primaryContacts.Add(new PrimaryContact("Steve", "0423985627", "Steve@email.com"));
+            primaryContacts.Add(new PrimaryContact("James", "0423985627", "James@email.com"));
+            primaryContacts.Add(new PrimaryContact("Steph", "0423985627", "Steph@email.com"));
+            primaryContacts.Add(new PrimaryContact("Lucy", "0423985627", "Lucy@email.com"));
+
+            foreach (var item in primaryContacts)
+            {
+                AddPrimaryContact(item);
+            }
+        }
+        // Adds the data to the TeamDetails table.
+        private void PopulateTeamDetailsTable()
+        {
+            List<TeamDetails> teamDetails = new List<TeamDetails>();
+
+            teamDetails.Add(new TeamDetails("The Elite", 4, 1));
+            teamDetails.Add(new TeamDetails("Cat Attack", 2, 2));
+            teamDetails.Add(new TeamDetails("Keter", 0, 3));
+            teamDetails.Add(new TeamDetails("Jingle Jangle", 2, 4));
+
+            foreach (var item in teamDetails)
+            {
+                AddTeamDetails(item);
+            }
+        }
+        // Adds the data to the GamesPlayed table.
+        private void PopulateGamesPlayedTable()
+        {
+            List<GamesPlayed> gamesPlayed = new List<GamesPlayed>();
+
+            gamesPlayed.Add(new GamesPlayed("Halo", "Team"));
+            gamesPlayed.Add(new GamesPlayed("Street Fighter", "Solo"));
+
+            foreach (var item in gamesPlayed)
+            {
+                AddGamesPlayed(item);
+            }
+        }
+        // Adds the data to the Events table.
+        private void PopulateEventsTable()
+        {
+            List<Events> events = new List<Events>();
+
+            events.Add(new Events("Worlds", "New York", "2025/10/31"));
+            events.Add(new Events("World Cup", "Earth", "2055/12/25"));
+
+            foreach (var item in events)
+            {
+                AddEvents(item);
+            }
+        }
+        // Adds the data to the TeamResults table.
+        private void PopulateTeamResultsTable()
+        {
+            List<TeamResults> teamResults = new List<TeamResults>();
+
+            teamResults.Add(new TeamResults(1, 1, 1, 2, "Win"));
+            teamResults.Add(new TeamResults(1, 1, 2, 1, "Win"));
+            teamResults.Add(new TeamResults(2, 2, 3, 4, "Lose"));
+            teamResults.Add(new TeamResults(2, 1, 4, 1, "Lose"));
+
+            foreach (var item in teamResults)
+            {
+                AddTeamResults(item);
             }
         }
         #endregion

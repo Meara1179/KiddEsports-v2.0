@@ -22,6 +22,12 @@ namespace DataManagement.Models
             GameName = gameName;
         }
 
+        public GamesPlayed(string gameName, string gameType)
+        {
+            GameName = gameName;
+            GameType = gameType;
+        }
+
         public GamesPlayed(int gamesPlayedID, string gameName, string gameType)
         {
             GamesPlayedID = gamesPlayedID;

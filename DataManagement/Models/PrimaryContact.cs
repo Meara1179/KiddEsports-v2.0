@@ -24,6 +24,13 @@ namespace DataManagement.Models
             PrimaryContactName = primaryContactName;
         }
 
+        public PrimaryContact(string primaryContactName, string primaryContactPhone, string primaryContactEmail)
+        {
+            PrimaryContactName = primaryContactName;
+            PrimaryContactPhone = primaryContactPhone;
+            PrimaryContactEmail = primaryContactEmail;
+        }
+
         public PrimaryContact(int primaryContactID, string primaryContactName, string primaryContactPhone, string primaryContactEmail)
         {
             PrimaryContactID = primaryContactID;
