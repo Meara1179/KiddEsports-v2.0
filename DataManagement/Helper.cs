@@ -8,6 +8,9 @@ using System.Data.SqlClient;
 
 namespace DataManagement
 {
+    /// <summary>
+    /// Helper class that handles getting the connection string and connecting to the database.
+    /// </summary>
     public static class Helper
     {
         // Gets the string used to connection to the database.

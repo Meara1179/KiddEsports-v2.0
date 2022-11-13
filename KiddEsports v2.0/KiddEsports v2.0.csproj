@@ -2,14 +2,20 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
     <RootNamespace>KiddEsports_v2._0</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <StartupObject>KiddEsports_v2._0.App</StartupObject>
+    <ApplicationIcon>Kidd Esports.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Binah_Stare.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Kidd Esports.ico" />
   </ItemGroup>
 
   <ItemGroup>
